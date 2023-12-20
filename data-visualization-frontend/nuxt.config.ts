@@ -1,5 +1,5 @@
 export default defineNuxtConfig({
-    modules: ["nuxt-primevue"],
+    modules: ["nuxt-primevue", "@pinia/nuxt"],
     devtools: { enabled: true },
     primevue: {
         usePrimeVue: true,
@@ -8,6 +8,14 @@ export default defineNuxtConfig({
             include: '*'
         }
     },
+    pinia: {
+        storesDirs: [
+            '~/stores'
+        ],
+    },
+    plugins: [
+        "~/plugins/userPlugin.ts",
+    ],
     app: {
         baseURL: '/',
         head: {

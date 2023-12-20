@@ -14,7 +14,7 @@
 							<InputGroupAddon>
 								<i class="pi pi-user"></i>
 							</InputGroupAddon>
-							<InputText placeholder="Username" v-model="form.username" />
+							<InputText placeholder="Email" v-model="form.email" />
 						</InputGroup>
 						<InputGroup>
 							<InputGroupAddon>
@@ -34,22 +34,43 @@
 		</div>
 	</div>
 </template>
-<script>
+<script lang="ts">
+import {useAuthStore} from "~/stores/useAuthStore";
+import {definePageMeta} from "#imports";
+import {mapActions, mapState} from "pinia";
+import {navigateTo} from "#app";
+
 export default {
 	name: "Login",
 	setup() {
-		const form = ref({
-			username: "",
-			password: ""
+		definePageMeta({
+			middleware: ["guest"]
 		});
-
+	},
+	data() {
 		return {
-			form
-		};
+			form: {
+				email: "",
+				password: ""
+			}
+		}
+	},
+	computed: {
+		...mapState(useAuthStore, {
+			isLoggedIn: state => state.isLoggedIn
+		})
 	},
 	methods: {
-		obSubmit() {
-			console.log(this.form);
+		...mapActions(useAuthStore, ["login"]),
+		obSubmit: async function () {
+			if (this.isLoggedIn) {
+				return navigateTo("/");
+			}
+			const {error} = await this.login(this.form);
+
+			if (!error.value) {
+				navigateTo("/");
+			}
 		}
 	}
 }

@@ -42,7 +42,6 @@
 	</Menu>
 </template>
 <script>
-
 export default {
 	name: "MenuSetting",
 	data() {

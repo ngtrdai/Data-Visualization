@@ -3,14 +3,14 @@
 		<div class="layout-header-inner">
 			<div class="flex align-items-center">
 				<DVLogo />
-				<MenuMain />
+				<MenuMain v-if="isLoggedIn" />
 			</div>
 			<ul class="flex list-none m-0 p-0 gap-2 align-items-center">
 				<li class="relative">
-					<MenuAction />
+					<MenuAction v-if="isLoggedIn" />
 				</li>
 				<li class="relative">
-					<MenuSetting />
+					<MenuSetting v-if="isLoggedIn" />
 				</li>
 			</ul>
 		</div>
@@ -22,12 +22,19 @@ import DVLogo from "~/components/commons/DVLogo.vue";
 import MenuSetting from "~/components/headers/MenuSetting.vue";
 import MenuAction from "~/components/headers/MenuAction.vue";
 import MenuMain from "~/components/headers/MenuMain.vue";
+import {mapState} from "pinia";
+import {useAuthStore} from "~/stores/useAuthStore.ts";
 
 export default {
 	name: "AppHeader",
 	components: {MenuMain, MenuAction, MenuSetting, DVLogo},
 	container: null,
 	scrollListener: null,
+	computed: {
+		...mapState(useAuthStore, {
+			isLoggedIn: state => state.isLoggedIn
+		})
+	},
 	mounted() {
 		this.bindScrollListener();
 	},

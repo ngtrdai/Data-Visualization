@@ -23,6 +23,7 @@
 							<Password
 								:inputProps="{ autocomplete: 'current_password' }"
 								:feedback="false"
+								placeholder="Password"
 								toggleMask
 								v-model="form.password" />
 						</InputGroup>

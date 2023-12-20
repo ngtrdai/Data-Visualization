@@ -6,7 +6,7 @@
     z-index: 1100;
     transition: background-color .5s, border-color .5s;
     border-bottom: 1px solid var(--surface-border);
-    background-color: var(--surface-ground);
+    background-color: var(--surface-section);
 
     &.layout-header-sticky {
         backdrop-filter: blur(8px);
@@ -20,8 +20,7 @@
         justify-content: space-between;
 
         .layout-header-logo__container {
-            width: 250px;
-            margin-right: 4rem;
+            margin-right: 1rem;
         }
 
         .layout-header-logo,

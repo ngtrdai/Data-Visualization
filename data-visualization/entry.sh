@@ -28,7 +28,4 @@ php artisan key:generate
 php artisan cache:clear
 php artisan optimize
 
-service nginx reload
-service nginx start
-
 php-fpm

@@ -12,11 +12,11 @@ services:
     depends_on:
       - backend
       - frontend
-      - postgres
+      - db
 
   backend:
     build:
-      context: ./data-visualization
+      context: ./data-viz
       dockerfile: Dockerfile
     container_name: data-visualization-backend
     tty: true
@@ -28,7 +28,7 @@ services:
 
   frontend:
     build:
-      context: ./data-visualization-frontend
+      context: ./data-viz-frontend
       dockerfile: Dockerfile
     container_name: data-visualization-frontend
     tty: true
@@ -42,7 +42,7 @@ services:
 
   db:
     image: postgres:16.1-alpine
-    container_name: data-visualization-postgres
+    container_name: data-visualization-database
     environment:
       - POSTGRES_DB=data-viz
       - POSTGRES_USER=admin

@@ -1,7 +1,7 @@
 FROM php:8.2-fpm-bullseye
 ENV COMPOSER_ALLOW_SUPERUSER=1
 
-WORKDIR /var/www/html/data-visualization
+WORKDIR /var/www/html/data-viz
  
 COPY . .
 
@@ -25,3 +25,5 @@ ENV APP_DEBUG=false
 ENV APP_URL=http://localhost
 
 USER root:www-data
+
+ENTRYPOINT ["sh", "../scripts/backend-scripts.sh"]

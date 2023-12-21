@@ -1,5 +1,5 @@
 #!/bin/bash
-cd /var/www/html/data-visualization
+cd /var/www/html/data-viz
 
 chgrp -R www-data storage
 chmod -R 770 storage

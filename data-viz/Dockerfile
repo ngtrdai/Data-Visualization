@@ -1,7 +1,7 @@
 FROM php:8.2-fpm-bullseye
 ENV COMPOSER_ALLOW_SUPERUSER=1
 
-WORKDIR /var/www/html/data-visualization
+WORKDIR /var/www/html/data-viz
  
 COPY . .
 
@@ -18,8 +18,6 @@ RUN docker-php-ext-install pdo pdo_mysql
 
 RUN docker-php-ext-install pdo pdo_pgsql
 
-RUN install-php-extensions xdebug-3.2.0
-
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 ENV APP_ENV=local
@@ -30,4 +28,4 @@ USER root:www-data
 
 EXPOSE 9000
 
-ENTRYPOINT ["sh", "entry.sh"]
+ENTRYPOINT ["sh", "../scripts/backend-scripts.sh"]

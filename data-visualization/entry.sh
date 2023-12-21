@@ -1,8 +1,8 @@
 #!/bin/bash
 cd /var/www/html/data-visualization
 
-chgrp -R www-data /var/www/backend/storage
-chmod -R 770 /var/www/backend/storage
+chgrp -R www-data /var/www/data-visualization/storage
+chmod -R 770 /var/www/data-visualization/storage
 
 cp .env.example .env
 

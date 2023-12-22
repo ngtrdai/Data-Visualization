@@ -5,7 +5,7 @@ on:
     branches: [main]
     paths:
       - 'data-viz/**'
-      - 'github/workflows/backend-ci.yaml'
+      - '.github/workflows/backend-ci.yaml'
 
 jobs:
   Build:
@@ -28,4 +28,4 @@ jobs:
             context: ./data-viz
             file: ./data-viz/Dockerfile.production
             push: true
-            tags: ghcr.io/ngtrdai/datav-viz/data-viz-backend:latest
+            tags: ghcr.io/ngtrdai/data-viz/data-viz-backend:latest

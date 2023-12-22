@@ -15,17 +15,17 @@ jobs:
         with:
           fetch-depth: 0
       - name: Log in to the Container registry
-          if: ${{ github.ref == 'refs/heads/master' }}
-          uses: docker/login-action@v2
-          with:
-            registry: ghcr.io
-            username: ${{ github.actor }}
-            password: ${{ secrets.TOKEN }}
-        - name: Build and push Docker images
-          if: ${{ github.ref == 'refs/heads/master' }}
-          uses: docker/build-push-action@v3
-          with:
-            context: ./data-viz
-            file: ./data-viz-frontend/dockerfile.production
-            push: true
-            tags: ghcr.io/ngtrdai/Data-Visualization/data-visualization-frontend:latest
+        if: ${{ github.ref == 'refs/heads/master' }}
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.TOKEN }}
+      - name: Build and push Docker images
+        if: ${{ github.ref == 'refs/heads/master' }}
+        uses: docker/build-push-action@v3
+        with:
+          context: ./data-viz
+          file: ./data-viz-frontend/dockerfile.production
+          push: true
+          tags: ghcr.io/ngtrdai/Data-Visualization/data-visualization-frontend:latest

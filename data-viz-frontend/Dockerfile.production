@@ -2,7 +2,7 @@ FROM node:18-alpine
 
 WORKDIR /home/node/DATA-VISUALIZATION/data-viz-frontend
 
-COPY ./data-viz-frontend/package*.json ./
+COPY package.json package-lock.json ./
 
 RUN npm install
 

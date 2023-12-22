@@ -28,4 +28,4 @@ jobs:
           context: ./data-viz
           file: ./data-viz-frontend/dockerfile.production
           push: true
-          tags: ghcr.io/ngtrdai/Data-Visualization/data-visualization-frontend:latest
+          tags: ghcr.io/ngtrdai/data-visualization/data-visualization-frontend:latest

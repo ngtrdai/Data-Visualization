@@ -26,6 +26,6 @@ jobs:
         uses: docker/build-push-action@v3
         with:
             context: ./data-viz
-            file: ./data-viz/dockerfile.production
+            file: ./data-viz/Dockerfile.production
             push: true
             tags: ghcr.io/ngtrdai/data-visualization/data-visualization-backend:latest

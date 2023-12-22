@@ -1,22 +1,18 @@
-from fastapi import APIRouter
-from database import LocalSession
+from fastapi import APIRouter, Depends
+from sqlalchemy.orm import Session
+from starlette import status
+
+from schemas.database import CheckConnectionSchema
+from database import get_db_context
 
 router = APIRouter(prefix='/database', tags=['Database'])
 
 
-def get_db_context():
-    try:
-        db = LocalSession()
-        yield db
-    finally:
-        db.close()
-
-
 @router.post("")
-async def connect_to_database() -> dict:
+async def connect_to_database(db: Session = Depends(get_db_context)) -> dict:
     return {"message": "OK"}
 
 
-@router.post("/check")
-async def check_connection() -> dict:
+@router.post("/check", status_code=status.HTTP_200_OK)
+async def check_connection(request: CheckConnectionSchema) -> dict:
     return {"message": "OK"}

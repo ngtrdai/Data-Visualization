@@ -1,6 +1,6 @@
 FROM node:18-alpine
 
-WORKDIR /home/node/DATA-VISUALIZATION/data-viz-frontend
+WORKDIR /app
 
 COPY package.json package-lock.json ./
 

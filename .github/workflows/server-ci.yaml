@@ -27,4 +27,4 @@ jobs:
         with:
           context: ./nginx
           push: true
-          tags: ghcr.io/ngtrdai/Data-Visualization/data-visualization-server:latest
+          tags: ghcr.io/ngtrdai/data-visualization/data-visualization-server:latest

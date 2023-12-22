@@ -1,9 +1,9 @@
-# Config cho backend
+# Config for backend
 upstream backend {
     server data-visualization-backend:9000;
 }
 
-# Config cho frontend
+# Config for frontend
 upstream frontend {
     server data-visualization-frontend:3000;
 }

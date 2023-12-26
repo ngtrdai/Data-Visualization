@@ -10,7 +10,7 @@ def get_connection_string():
     host = os.environ.get("DB_HOST")
     username = os.environ.get("DB_USERNAME")
     password = os.environ.get("DB_PASSWORD")
-    dbname = os.environ.get("DB_NAME")
+    dbname = os.environ.get("DB_DATABASE")
     return f"{engine}://{username}:{password}@{host}/{dbname}"
 
 

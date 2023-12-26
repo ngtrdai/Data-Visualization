@@ -5,8 +5,8 @@ from settings import SQLALCHEMY_DATABASE_URL
 
 
 def get_db_context():
+    db = SessionLocal()
     try:
-        db = SessionLocal()
         yield db
     finally:
         db.close()

@@ -1,63 +1,78 @@
 version: '3.8'
 services:
   nginx:
-    image: nginx:latest
-    container_name: webserver
+    build: ./docker/nginx
+    restart: unless-stopped
     ports:
-      - "8080:80"
+      - "80:80"
     volumes:
-      - "./nginx/nginx.conf:/etc/nginx/conf.d/default.conf"
+      - ./docker/nginx/templates:/etc/nginx/templates
+      - ./docker/nginx/configuration/custom_proxy_settings.conf:/etc/nginx/conf.d/custom_proxy_settings.conf
+    environment:
+      - domain=${DOMAIN}
     networks:
       - data-visualization-network
-    depends_on:
-      - backend
-      - frontend
-      - db
 
-  backend:
+  data-viz:
     build:
       context: ./data-viz
-      dockerfile: Dockerfile
-    container_name: data-visualization-backend
-    tty: true
-    restart: always
-    volumes:
-      - "./:/var/www/html"
-    networks:
-      - data-visualization-network
-
-  frontend:
-    build:
-      context: ./data-viz-frontend
-      dockerfile: Dockerfile
-    container_name: data-visualization-frontend
-    tty: true
-    restart: always
-    volumes:
-      - ./:/home/node/DATA-VISUALIZATION
+      args:
+        - WWWGROUP=1000
     ports:
-      - 3000:3000
-    networks:
-      - data-visualization-network
-
-  db:
-    image: postgres:16.1-alpine
-    container_name: data-visualization-database
+      - "8000:8000"
+    tty: true
+    restart: always
     environment:
-      - POSTGRES_DB=data-viz
-      - POSTGRES_USER=admin
-      - POSTGRES_PASSWORD=admin
-    ports:
-      - "5432:5432"
+      - WWWUSER=1000
     volumes:
+      - ".:/var/www/html"
+    networks:
+      - data-visualization-network
+
+  data-viz-frontend:
+    build: ./data-viz-frontend
+    tty: true
+    restart: always
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/src
+      - /src/node_modules
+      - /src/.output
+    networks:
+      - data-visualization-network
+
+  postgres:
+    build: ./docker/postgres
+    hostname: ${POSTGRES_HOST}
+    ports:
+      - "${POSTGRES_PORT}:${POSTGRES_PORT}"
+    command: postgres -c 'max_connections=500'
+    environment:
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+    volumes:
+      - ./docker/postgres/postgresql.conf.sample:/usr/share/postgresql/postgresql.conf.sample
+      - ./docker/postgres/db_init.sql:/docker-entrypoint-initdb.d/db_init_init.sql
       - postgres:/var/lib/postgresql/data
+    networks:
+      - data-visualization-network
+
+  pgadmin:
+    image: dpage/pgadmin4:6.20
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@dataviz.io.vn
+      PGADMIN_DEFAULT_PASSWORD: admin
     networks:
       - data-visualization-network
 
 networks:
   data-visualization-network:
-    driver: bridge  
+    driver: bridge
+    name: data-visualization-network
 
 volumes:
   postgres:
-    driver: local
+  pgadmin:

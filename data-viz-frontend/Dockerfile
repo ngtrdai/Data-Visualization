@@ -1,13 +1,28 @@
-FROM node:18-alpine
+FROM node:18-alpine AS base
 
-WORKDIR /home/node/DATA-VISUALIZATION/data-viz-frontend
+LABEL maintainer="Dai Nguyen Trong"
 
-COPY package*.json ./
+ARG NODE_ENV=production
+ARG PORT=3000
 
-RUN npm install
+WORKDIR /src
+
+# Build
+FROM base AS build
+
+COPY package.json package-lock.json ./
+RUN npm install --production=false
 
 COPY . .
 
 RUN npm run build
+RUN npm prune
 
-ENTRYPOINT ["sh", "../scripts/frontend-scripts.sh"]
+# Run
+FROM base
+ENV PORT=${PORT}
+
+COPY --from=build /src/.output /src/.output
+COPY --from=build /src/node_modules /src/node_modules
+
+CMD ["node", ".output/server/index.mjs"]

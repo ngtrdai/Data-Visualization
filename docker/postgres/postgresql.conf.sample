@@ -1,0 +1,14 @@
+# LOGGING
+# log_min_error_statement = fatal
+# log_min_messages = DEBUG1
+
+# CONNECTION
+listen_addresses = '*'
+
+# MODULES
+shared_preload_libraries = 'decoderbufs,wal2json'
+
+# REPLICATION
+wal_level = logical
+max_wal_senders = 20
+max_replication_slots = 20

@@ -1,4 +1,9 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+if [ ! -z "$WWWUSER" ]; then
+    usermod -u $WWWUSER dataviz
+fi
+
 cd /var/www/html/data-viz
 
 chgrp -R www-data storage
@@ -28,4 +33,8 @@ php artisan key:generate
 php artisan cache:clear
 php artisan optimize
 
-php-fpm
+if [ $# -gt 0 ]; then
+    exec gosu $WWWUSER "$@"
+else
+    exec /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf
+fi

@@ -1,0 +1,23 @@
+server {
+    server_name api.$domain;
+
+    location / {
+        proxy_pass http://data-viz:8000;
+    }
+}
+
+server {
+    server_name $domain;
+
+    location / {
+        proxy_pass http://data-viz-frontend:3000;
+    }
+}
+
+server {
+    server_name pgadmin.$domain;
+
+    location / {
+        proxy_pass http://pgadmin;
+    }
+}

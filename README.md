@@ -11,6 +11,8 @@
 - NuxtJs 3
 - GitHub Actions
 - SonarCloud
+## Local development architecture
+![DataViz - local development architecture](https://github.com/ngtrdai/Data-Visualization/blob/main/DataViz-Architecture.png)
 ## Getting started with Docker Compose
 1. Get the latest source code
 2. Add the following records to your host file: 

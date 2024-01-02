@@ -5,7 +5,7 @@ from importlib.metadata import entry_points
 from pathlib import Path
 from typing import Any, Optional
 
-from engine_specifics.base import BaseSpecificEngine
+from app.engine_specifics.base import BaseSpecificEngine
 
 
 def is_engine_specific(obj: Any) -> bool:

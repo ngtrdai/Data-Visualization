@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine, MetaData
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
-from settings import SQLALCHEMY_DATABASE_URL
+from app.settings import SQLALCHEMY_DATABASE_URL
 
 
 def get_db_context():

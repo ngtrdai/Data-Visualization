@@ -1,6 +1,6 @@
-from daos.base import BaseDAO
+from app.daos.base import BaseDAO
 
-from schemas.dbs import DBS
+from app.schemas.dbs import DBS
 
 
 class DbsDAO(BaseDAO[DBS]):

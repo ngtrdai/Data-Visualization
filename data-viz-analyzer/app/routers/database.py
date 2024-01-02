@@ -4,11 +4,11 @@ from fastapi import APIRouter, Depends, HTTPException
 from pydantic import ValidationError
 from sqlalchemy.orm import Session
 from starlette import status
-from schemas.dbs import DBS
-from models.dbs import DBSValidateParametersModel
-from schemas.dbs import DBSValidateParametersSchema
-from commands.database.validate import ValidateDatabaseParametersCommand
-from database import get_db_context
+from app.schemas.dbs import DBS
+from app.models.dbs import DBSValidateParametersModel
+from app.schemas.dbs import DBSValidateParametersSchema
+from app.commands.database.validate import ValidateDatabaseParametersCommand
+from app.database import get_db_context
 
 router = APIRouter(prefix='/database', tags=['Database'])
 

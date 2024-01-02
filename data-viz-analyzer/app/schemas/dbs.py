@@ -8,13 +8,13 @@ from marshmallow.validate import Length
 from sqlalchemy import Column, Integer, Uuid, String, MetaData, Boolean, Text, URL
 from sqlalchemy.exc import NoSuchModuleError
 
-from utils.constants import PASSWORD_MASK
-from utils.core import make_url_safe
+from app.utils.constants import PASSWORD_MASK
+from app.utils.core import make_url_safe
 
-from engine_specifics import get_engine_specific
-from engine_specifics.base import BaseSpecificEngine
-from database import Base
-from schemas.base_entity import BaseEntity
+from app.engine_specifics import get_engine_specific
+from app.engine_specifics.base import BaseSpecificEngine
+from app.database import Base
+from app.schemas.base_entity import BaseEntity
 
 
 def extra_validator(value: str) -> str:

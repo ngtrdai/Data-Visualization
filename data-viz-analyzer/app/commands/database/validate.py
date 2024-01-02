@@ -1,9 +1,9 @@
 import json
 from typing import Any, Optional
 
-from commands.base import BaseCommand
-from engine_specifics import get_engine_specific
-from daos.dbs import DbsDAO
+from app.commands.base import BaseCommand
+from app.engine_specifics import get_engine_specific
+from app.daos.dbs import DbsDAO
 
 BYPASS_VALIDATION = []
 

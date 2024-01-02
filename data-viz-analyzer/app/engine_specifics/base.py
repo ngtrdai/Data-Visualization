@@ -8,9 +8,9 @@ from marshmallow.validate import Range
 from sqlalchemy import types, URL
 from sqlalchemy.sql.type_api import TypeEngine
 
-from utils.core import GenericDataType, ColumnTypeSource, ColumnSpec, make_url_safe
-from errors import DataVizError, DataVizErrorType, ErrorLevel
-from utils.network import is_hostname_valid, is_port_open
+from app.utils.core import GenericDataType, ColumnTypeSource, ColumnSpec, make_url_safe
+from app.errors import DataVizError, DataVizErrorType, ErrorLevel
+from app.utils.network import is_hostname_valid, is_port_open
 
 ColumnTypeMapping = tuple[
     Pattern[str],

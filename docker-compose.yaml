@@ -16,8 +16,6 @@ services:
   data-viz:
     build:
       context: ./data-viz
-      args:
-        - WWWGROUP=1000
     ports:
       - "8000:8000"
     tty: true
@@ -39,6 +37,15 @@ services:
       - .:/src
       - /src/node_modules
       - /src/.output
+    networks:
+      - data-visualization-network
+
+  data-viz-analyzer:
+    build: ./data-viz-analyzer
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/src
     networks:
       - data-visualization-network
 

@@ -2,15 +2,15 @@ import re
 from datetime import datetime
 from typing import Any
 
-from engine_specifics.base import BaseSpecificEngine
+from app.engine_specifics.base import BaseSpecificEngine
 from sqlalchemy import Date, DateTime, DOUBLE_PRECISION, String, JSON
 from sqlalchemy.dialects.postgresql import ENUM
 
-from utils.constants import TimeGrain
+from app.utils.constants import TimeGrain
 
-from utils.core import GenericDataType
+from app.utils.core import GenericDataType
 
-from engine_specifics.base import BasicParametersMixin
+from app.engine_specifics.base import BasicParametersMixin
 
 
 class PostgresBaseSpecificEngine(BaseSpecificEngine):

@@ -1,4 +1,4 @@
-name: backend-docker-build
+name: analyzer-docker-build
 
 on:
   push:

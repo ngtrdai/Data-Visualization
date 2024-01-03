@@ -13,7 +13,8 @@ services:
     networks:
       - data-visualization-network
   data-viz:
-    image: ghcr.io/ngtrdai/data-viz/data-viz-backend:latest
+    build:
+      context: ./data-viz
     ports:
       - "8000:8000"
     tty: true
@@ -25,7 +26,7 @@ services:
     networks:
       - data-visualization-network
   data-viz-frontend:
-    image: ghcr.io/ngtrdai/data-viz/data-viz-frontend:latest
+    build: ./data-viz-frontend
     tty: true
     restart: always
     ports:
@@ -37,7 +38,7 @@ services:
     networks:
       - data-visualization-network
   data-viz-analyzer:
-    image: ghcr.io/ngtrdai/data-viz/data-viz-analyzer:latest
+    build: ./data-viz-analyzer
     ports:
       - "8080:8080"
     volumes:

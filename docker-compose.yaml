@@ -57,8 +57,7 @@ services:
       - KC_DB_URL
       - KC_DB_USERNAME
       - KC_DB_PASSWORD
-      - KC_HTTP_PORT,
-      - PROXY_ADDRESS_FORWARDING
+      - KC_HTTP_PORT
     networks:
       - data-visualization-network
   postgres:

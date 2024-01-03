@@ -12,7 +12,6 @@ services:
       - domain=${DOMAIN}
     networks:
       - data-visualization-network
-
   data-viz:
     build:
       context: ./data-viz
@@ -26,7 +25,6 @@ services:
       - ".:/var/www/html"
     networks:
       - data-visualization-network
-
   data-viz-frontend:
     build: ./data-viz-frontend
     tty: true
@@ -39,7 +37,6 @@ services:
       - /src/.output
     networks:
       - data-visualization-network
-
   data-viz-analyzer:
     build: ./data-viz-analyzer
     ports:
@@ -48,7 +45,20 @@ services:
       - .:/src
     networks:
       - data-visualization-network
-
+  data-viz-idenity:
+    image: quay.io/keycloak/keycloak:21.0.2
+    command: ['start-dev']
+    environment:
+      - KEYCLOAK_ADMIN
+      - KEYCLOAK_ADMIN_PASSWORD
+      - KC_PROXY
+      - KC_DB
+      - KC_DB_URL
+      - KC_DB_USERNAME
+      - KC_DB_PASSWORD
+      - KC_HTTP_PORT
+    networks:
+      - data-visualization-network
   postgres:
     build: ./docker/postgres
     hostname: ${POSTGRES_HOST}

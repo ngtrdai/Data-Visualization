@@ -19,6 +19,7 @@
 ```
 127.0.0.1 api.dataviz.local
 127.0.0.1 analyzer.dataviz.local
+127.0.0.1 keycloak.dataviz.local
 127.0.0.1 pgadmin.dataviz.local
 127.0.0.1 dataviz.local
 ```
@@ -26,5 +27,6 @@
 4. Open your browser, now you can access the websites via `http://dataviz.local/` login with admin/admin
 #### You might also want to explore:
 1. `http://pgadmin.dataviz.local/`. Account login: `admin@dataviz.io.vn` / admin. Register a server: postgres, port 5432, username admin, password admin. The Postgresql server is also exposed to the host machine: servername: localhost, port: 5432, username: admin, password: admin
-2. `http://api.dataviz.local`
-3. `http://analyzer.dataviz.local/docs`
+2. `http://keycloak.dataviz.local/`. Account login: `admin` / `admin`
+3. `http://api.dataviz.local` for API documentation
+4. `http://analyzer.dataviz.local/docs` for Analyzer API documentation

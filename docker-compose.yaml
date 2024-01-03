@@ -44,7 +44,7 @@ services:
       - .:/src
     networks:
       - data-visualization-network
-  data-viz-idenity:
+  data-viz-identity:
     image: quay.io/keycloak/keycloak:21.0.2
     command: ['start-dev']
     environment:

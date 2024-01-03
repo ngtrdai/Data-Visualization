@@ -47,6 +47,8 @@ services:
   data-viz-identity:
     image: quay.io/keycloak/keycloak:21.0.2
     command: ['start-dev']
+    volumes:
+      - ./docker/identity/realm-export.json:/opt/keycloak/data/import/realm-export.json
     environment:
       - KEYCLOAK_ADMIN
       - KEYCLOAK_ADMIN_PASSWORD

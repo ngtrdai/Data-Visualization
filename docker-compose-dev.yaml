@@ -47,7 +47,7 @@ services:
       - data-visualization-network
   data-viz-identity:
     image: quay.io/keycloak/keycloak:21.0.2
-    command: ['start-dev']
+    command: ['start-dev --import-realm']
     volumes:
       - ./docker/identity/realm-export.json:/opt/keycloak/data/import/realm-export.json
     environment:

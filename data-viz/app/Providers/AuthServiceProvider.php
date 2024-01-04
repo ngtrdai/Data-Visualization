@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace DataViz\Providers;
 
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -13,7 +13,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array<class-string, class-string>
      */
     protected $policies = [
-        // 'App\Models\Model' => 'App\Policies\ModelPolicy',
+        // 'DataViz\Models\Model' => 'DataViz\Policies\ModelPolicy',
     ];
 
     /**

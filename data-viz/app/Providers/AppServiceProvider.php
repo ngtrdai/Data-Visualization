@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace DataViz\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

@@ -1,7 +1,9 @@
 import Keycloak from "keycloak-js";
+import {useAuthStore} from "~/stores/useAuthStore.js";
 
 export default defineNuxtPlugin(((app) => {
     const runtimeConfig = useRuntimeConfig();
+    const authStore = useAuthStore();
     const keycloak = new Keycloak({
         realm: runtimeConfig.public.keycloakRealm,
         url: runtimeConfig.public.keycloakUrl,
@@ -14,15 +16,17 @@ export default defineNuxtPlugin(((app) => {
         if (!auth) {
             window.location.reload();
         } else {
-            console.log("Authenticated");
+            keycloak.updateToken(5).then((refreshed) => {
+                if (refreshed) {
+                    console.log("Token refreshed" + refreshed);
+                } else {
+                    console.log('Token is still valid');
+                }
+            }).catch(() => {
+                console.error("Failed to refresh token");
+            });
+
+            authStore.setup(keycloak);
         }
-    }).catch(() => {
-        console.error("Authenticated Failed");
     });
-
-    keycloak.updateToken(2000).then(r => {
-        console.log(r);
-    });
-
-    app.$keycloak = keycloak;
 }))

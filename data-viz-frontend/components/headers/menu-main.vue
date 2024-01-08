@@ -9,9 +9,15 @@ export default {
 			items: [
 				{
 					label: 'Home',
+					command: () => {
+						navigateTo('/');
+					}
 				},
 				{
 					label: 'Dashboards',
+					command: () => {
+						navigateTo('/dashboard');
+					}
 				},
 				{
 					label: 'Charts',

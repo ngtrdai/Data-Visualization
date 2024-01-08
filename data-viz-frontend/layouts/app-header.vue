@@ -23,7 +23,7 @@ import MenuSetting from "~/components/headers/menu-setting.vue";
 import MenuAction from "~/components/headers/menu-action.vue";
 import MenuMain from "~/components/headers/menu-main.vue";
 import {mapState} from "pinia";
-import {useAuthStore} from "~/stores/useAuthStore.ts";
+import {useAuthStore} from "~/stores/useAuthStore.js";
 
 export default {
 	name: "AppHeader",

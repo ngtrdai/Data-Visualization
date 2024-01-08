@@ -42,6 +42,8 @@
 	</Menu>
 </template>
 <script>
+import {useAuthStore} from "~/stores/useAuthStore.js";
+
 export default {
 	name: "MenuSetting",
 	data() {
@@ -66,7 +68,7 @@ export default {
 							label: "Logout",
 							icon: "pi pi-sign-out",
 							command: () => {
-								console.log("Logout");
+								useAuthStore().logout();
 							}
 						}
 					]

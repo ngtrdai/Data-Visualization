@@ -1,5 +1,8 @@
 export default defineNuxtConfig({
-    modules: ["nuxt-primevue", "@pinia/nuxt"],
+    modules: [
+        "nuxt-primevue",
+        "@pinia/nuxt"
+    ],
     devtools: { enabled: true },
     primevue: {
         usePrimeVue: true,
@@ -13,9 +16,6 @@ export default defineNuxtConfig({
             '~/stores'
         ],
     },
-    plugins: [
-        "~/plugins/userPlugin.ts",
-    ],
     app: {
         baseURL: '/',
         head: {
@@ -26,6 +26,13 @@ export default defineNuxtConfig({
                 { name: 'description', content: 'Data Visualization' }
             ]
         },
+    },
+    runtimeConfig: {
+        public: {
+            keycloakUrl: process.env.KEYCLOAK_URL,
+            keycloakRealm: process.env.KEYCLOAK_REALM,
+            keycloakClientId: process.env.KEYCLOAK_CLIENT_ID,
+        }
     },
     css: [
         "primeflex/primeflex.css",

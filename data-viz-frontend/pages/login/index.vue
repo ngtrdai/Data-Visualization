@@ -36,17 +36,11 @@
 </template>
 <script lang="ts">
 import {useAuthStore} from "~/stores/useAuthStore";
-import {definePageMeta} from "#imports";
 import {mapActions, mapState} from "pinia";
 import {navigateTo} from "#app";
 
 export default {
 	name: "Login",
-	setup() {
-		definePageMeta({
-			middleware: ["guest"]
-		});
-	},
 	data() {
 		return {
 			form: {

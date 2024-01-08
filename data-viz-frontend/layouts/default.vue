@@ -10,8 +10,8 @@
 	</div>
 </template>
 <script>
-import AppHeader from "~/layouts/AppHeader.vue";
-import AppFooter from "~/layouts/AppFooter.vue";
+import AppHeader from "~/layouts/app-header.vue";
+import AppFooter from "~/layouts/app-footer.vue";
 
 export default {
 	name: "DefaultLayout",

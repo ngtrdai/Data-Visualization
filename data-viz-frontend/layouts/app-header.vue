@@ -18,10 +18,10 @@
 </template>
 
 <script>
-import DVLogo from "~/components/commons/DVLogo.vue";
-import MenuSetting from "~/components/headers/MenuSetting.vue";
-import MenuAction from "~/components/headers/MenuAction.vue";
-import MenuMain from "~/components/headers/MenuMain.vue";
+import DVLogo from "~/components/commons/data-viz-logo.vue";
+import MenuSetting from "~/components/headers/menu-setting.vue";
+import MenuAction from "~/components/headers/menu-action.vue";
+import MenuMain from "~/components/headers/menu-main.vue";
 import {mapState} from "pinia";
 import {useAuthStore} from "~/stores/useAuthStore.ts";
 

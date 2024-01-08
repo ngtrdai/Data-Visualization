@@ -9,7 +9,3 @@ export default defineComponent({
 <template>
 
 </template>
-
-<style scoped>
-
-</style>
